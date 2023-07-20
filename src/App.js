@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import "./styles/App.css"
 import PostList from './components/PostList';
+import MyButton from './components/UI/button/MyButton';
 
 function App() {
 const [posts,setPosts] = useState([
@@ -14,7 +15,7 @@ const [posts,setPosts] = useState([
     <div className="App">
       <input type="text" placeholder='Name post' />
       <input type="text" placeholder='Description'/>
-      <button>Add post</button>
+      <MyButton >Add post</MyButton>
      <PostList posts={posts}title='Post about Js'/>
 
    
