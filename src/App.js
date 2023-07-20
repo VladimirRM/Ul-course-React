@@ -8,16 +8,15 @@ const [posts,setPosts] = useState([
   {id:2, title: 'Hello', body: 'description'},
   {id:3, title: 'Hello', body: 'description'},
 ])
-const [posts2,setPosts2] = useState([
-  {id:1, title: 'Python', body: 'description'},
-  {id:2, title: 'Python', body: 'description'},
-  {id:3, title: 'Python', body: 'description'},
-])
+
 
   return (
     <div className="App">
-     <PostList 
-     posts={posts}title='Post list 1'/>
+      <input type="text" placeholder='Name post' />
+      <input type="text" placeholder='Description'/>
+      <button>Add post</button>
+     <PostList posts={posts}title='Post about Js'/>
+
    
 
     </div>
