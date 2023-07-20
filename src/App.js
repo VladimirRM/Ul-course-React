@@ -18,15 +18,21 @@ const [selectedSort, setSelectedSort]= useState('')
 const [searchQuery, setSearchQuery]= useState('')
 
 
-function  getSortedPosts(){
-  console.log("sorted done")
-     if(selectedSort){
-      return [...posts].sort((a,b)=> a[selectedSort].localeCompare(b[selectedSort]))
-     }
-     return posts
-}
 
-const sortedPosts = getSortedPosts()
+
+const sortedPosts = useMemo(()=>{
+  console.log("sorted done")
+
+  if(selectedSort){
+    return [...posts].sort((a,b)=> a[selectedSort].localeCompare(b[selectedSort]))
+   }
+   return posts
+
+},[selectedSort,posts])
+
+const sortAndSearchedPosts = useMemo(()=>{
+    return sortedPosts.filter(post=>post.title.toLowerCase().includes(searchQuery))
+},[searchQuery,sortedPosts])
 
 const createPost = (newPost)=>{
      setPosts([...posts,newPost])
@@ -63,8 +69,8 @@ return (
 
 
      </div>
-     {posts.length !== 0
-      ?  <PostList posts={sortedPosts}title='Post about Js'remove={removePost}/>
+     {sortAndSearchedPosts.length !== 0
+      ?  <PostList posts={sortAndSearchedPosts}title='Post about Js'remove={removePost}/>
       :<h1 style={{textAlign: 'center'}}>Posts not found!</h1>
     }
     
