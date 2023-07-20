@@ -25,6 +25,13 @@ const removePost = (post)=>{
 return (
     <div className="App">
      <PostForm create={createPost}/>
+     <div>
+      <select>
+        <option value="value1">Name</option>
+        <option value="value2">Discription</option>
+        <option value=""></option>
+      </select>
+     </div>
      {posts.length !== 0
       ?  <PostList posts={posts}title='Post about Js'remove={removePost}/>
       :<h1 style={{textAlign: 'center'}}>Posts not found!</h1>
