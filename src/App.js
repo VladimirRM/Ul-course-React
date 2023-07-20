@@ -6,6 +6,7 @@ import MyInput from './components/UI/input/MyInput';
 
 function App() {
 const [posts,setPosts] = useState([
+
   {id:1, title: 'Hello', body: 'description'},
   {id:2, title: 'Hello', body: 'description'},
   {id:3, title: 'Hello', body: 'description'},
@@ -22,7 +23,9 @@ const addNewPost = (e)=>{
       title,
       body,
    }
-   console.log(newPost);
+setPosts([...posts,newPost])
+setTitle('')
+setBody('')
 
 }
 
