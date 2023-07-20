@@ -12,10 +12,18 @@ const [posts,setPosts] = useState([
 ])
 
 const [title,setTitle] = useState('')
+const [body,setBody] = useState('')
 
 const addNewPost = (e)=>{
- e.preventDefault() 
- console.log(bodyInputRef.current.value) 
+  e.preventDefault()
+
+   const newPost = {
+    id:Date.now(),
+      title,
+      body,
+   }
+   console.log(newPost);
+
 }
 
 const bodyInputRef = useRef()
@@ -32,7 +40,8 @@ const bodyInputRef = useRef()
       ref={bodyInputRef}
       /> */}
       <MyInput type="text" placeholder='Description'
-      ref={bodyInputRef}
+     value={body}
+     onChange={e=>setBody(e.target.value)}
       />
       <MyButton onClick={addNewPost} >Add post</MyButton>
      <PostList posts={posts}title='Post about Js'/>
