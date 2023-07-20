@@ -1,4 +1,4 @@
-import React,{useRef, useState} from 'react';
+import React,{ useState} from 'react';
 import "./styles/App.css"
 import PostList from './components/PostList';
 import MyButton from './components/UI/button/MyButton';
@@ -12,39 +12,30 @@ const [posts,setPosts] = useState([
   {id:3, title: 'Hello', body: 'description'},
 ])
 
-const [title,setTitle] = useState('')
-const [body,setBody] = useState('')
+const [post,setPost] = useState({title:'', body:''})
+
 
 const addNewPost = (e)=>{
   e.preventDefault()
 
-   const newPost = {
-    id:Date.now(),
-      title,
-      body,
-   }
-setPosts([...posts,newPost])
-setTitle('')
-setBody('')
+setPosts([...posts,{...post,id:Date.now()}])
+setPost({title:'', body:''})
 
 }
 
-const bodyInputRef = useRef()
+
 
 
   return (
     <div className="App">
       <MyInput type="text" placeholder='Name post' 
-       value={title}
-       onChange={e=>setTitle(e.target.value)}
+       value={post.title}
+       onChange={e=>setPost({...post, title: e.target.value})}
       />
 
-      {/* <input type="text"
-      ref={bodyInputRef}
-      /> */}
       <MyInput type="text" placeholder='Description'
-     value={body}
-     onChange={e=>setBody(e.target.value)}
+     value={post.body}
+     onChange={e=>setPost({...post, body: e.target.value})}
       />
       <MyButton onClick={addNewPost} >Add post</MyButton>
      <PostList posts={posts}title='Post about Js'/>
