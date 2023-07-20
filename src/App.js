@@ -16,19 +16,20 @@ const [posts,setPosts] = useState([
 const createPost = (newPost)=>{
      setPosts([...posts,newPost])
 }
-
-
-
-
-
-
-
-
-  return (
+const removePost = (post)=>{
+     setPosts(posts.filter(p=> p.id !== post.id))
+}
+// const removePost = (post,id)=>{
+//      setPosts([...posts].filter(post=> post.id !== id))
+// }
+return (
     <div className="App">
-
-      <PostForm create={createPost}/>
-     <PostList posts={posts}title='Post about Js'/>
+     <PostForm create={createPost}/>
+     {posts.length !== 0
+      ?  <PostList posts={posts}title='Post about Js'remove={removePost}/>
+      :<h1 style={{textAlign: 'center'}}>Posts not found!</h1>
+    }
+    
 
    
 
