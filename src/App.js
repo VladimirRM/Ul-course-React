@@ -31,7 +31,7 @@ const sortedPosts = useMemo(()=>{
 
 },[filter,posts])
 
-const sortAndSearchedPosts = useMemo(()=>{
+const sortedAndSearchedPosts = useMemo(()=>{
     return sortedPosts.filter(post=>post.title.toLowerCase().includes(filter.query))
 },[filter.query,sortedPosts])
 
@@ -58,7 +58,7 @@ return (
      <div>
 
     </div>
-       <PostList remove={removePost} posts={sortAndSearchedPosts}title='Post about Js'/>
+       <PostList remove={removePost} posts={sortedAndSearchedPosts}title='Post about Js'/>
 
    
      </div>
