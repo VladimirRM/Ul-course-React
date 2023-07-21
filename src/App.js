@@ -13,6 +13,7 @@ const [posts,setPosts] = useState([
   {id:3, title: 'ccllo', body: 'aescription'},
 ])
 const [filter,setFilter] = useState({sort:'',query:''})
+const [modal,setModal]  = useState(false)
 
 
 
@@ -39,7 +40,8 @@ const removePost = (post)=>{
 }
 return (
     <div className="App">
-      <MyModal>
+      
+      <MyModal visible={modal} setVisible={setModal}>
            <PostForm create={createPost}/>
      </MyModal>
      <hr style={{margin: '15px 0'}} />
