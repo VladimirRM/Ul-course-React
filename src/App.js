@@ -50,10 +50,9 @@ return (
      <div>
 
     </div>
-     {sortAndSearchedPosts.length !== 0
-      ?  <PostList posts={sortAndSearchedPosts}title='Post about Js'remove={removePost}/>
-      :<h1 style={{textAlign: 'center'}}>Posts not found!</h1>
-    }
+       <PostList remove={removePost} posts={sortAndSearchedPosts}title='Post about Js'/>
+       
+   
      </div>
   );
 }
