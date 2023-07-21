@@ -4,6 +4,7 @@ import PostList from './components/PostList';
 import PostForm from './components/PostForm';
 import PostFilter from './components/PostFilter';
 import MyModal from './components/mymodal/MyModal'
+import MyButton from './components/UI/button/MyButton';
 
 function App() {
 const [posts,setPosts] = useState([
@@ -34,12 +35,18 @@ const sortAndSearchedPosts = useMemo(()=>{
 
 const createPost = (newPost)=>{
      setPosts([...posts,newPost])
+     setModal(false)
 }
 const removePost = (post)=>{
      setPosts(posts.filter(p=> p.id !== post.id))
 }
 return (
     <div className="App">
+      <MyButton onClick={()=> setModal(true)}
+        style={{marginTop: '30px'}}
+      >
+        Create user...
+      </MyButton>
       
       <MyModal visible={modal} setVisible={setModal}>
            <PostForm create={createPost}/>
