@@ -9,8 +9,8 @@ const MyModal = ({children,visible,setVisible}) => {
   }
   return (
     <div className={rootClasses.join(' ')}>
-      <div className={cl.myModalContent}></div>
-        {children}
+      <div className={cl.myModalContent}> {children}</div>
+       
     </div>
   )
 }

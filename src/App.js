@@ -1,4 +1,6 @@
 import React,{ useState,useMemo} from 'react';
+import './index.css'
+
 import "./styles/App.css"
 import PostList from './components/PostList';
 import PostForm from './components/PostForm';
