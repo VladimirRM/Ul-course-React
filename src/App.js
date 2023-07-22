@@ -17,7 +17,7 @@ const [modal,setModal]  = useState(false)
 const sortedAndSearchedPosts = usePosts(posts, filter.sort,filter.query)
   
 useEffect(()=>{
-console.log(" effct working")
+   fetchPosts()
 },[])
 
 const createPost = (newPost)=>{
