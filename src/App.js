@@ -9,6 +9,8 @@ import MyModal from './components/mymodal/MyModal'
 import MyButton from './components/UI/button/MyButton';
 import { usePosts } from './components/hooks/usePosts';
 import PostService from './API/PostSevise';
+import Loader from './components/Loader/Loader';
+import { useFetching } from './components/hooks/UseFetching';
 
 function App() {
 const [posts,setPosts] = useState([
@@ -16,7 +18,15 @@ const [posts,setPosts] = useState([
 const [filter,setFilter] = useState({sort:'',query:''})
 const [modal,setModal]  = useState(false)
 const sortedAndSearchedPosts = usePosts(posts, filter.sort,filter.query)
-const [isPostLoading, setIsPostLoading] = useState(false)
+const [limit,setLimit ] = useState(10)
+const [page,setPage ] = useState(1)
+const [fetchPosts,isPostLoading,postError]= useFetching(async()=>{
+  const response =  await PostService.getAll(limit,page)
+  setPosts(response.data)
+  console.log(response.headers['x-total-count'])
+  setTotalCount(response.headers['x-total-count'])
+})
+const [totalCount, setTotalCount] = useState(0)
   
 useEffect(()=>{
    fetchPosts()
@@ -28,16 +38,9 @@ const createPost = (newPost)=>{
 }
 
 
- async function fetchPosts  (){
-   setIsPostLoading(true)
-   setTimeout(async()=>{
-    const posts =  await PostService.getAll()
-    setPosts(posts)
-   setIsPostLoading(false)
-   },1000)
 
 
-}
+
 const removePost = (post)=>{
      setPosts(posts.filter(p=> p.id !== post.id))
 }
@@ -58,8 +61,11 @@ return (
      <div>
 
     </div>
+    {postError && <h1>Error${postError}</h1>}
     {isPostLoading ?
-         <h1>Loading...</h1>
+       <div style={{display: 'flex' ,justifyContent:'center' , marginTop: '50px'}}>
+        <Loader />
+        </div>
       :  
       <PostList remove={removePost} posts={sortedAndSearchedPosts}title='Post about Js'/>
   }
