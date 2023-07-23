@@ -12,7 +12,7 @@ import PostService from '../API/PostSevise';
 import Loader from '../components/Loader/Loader';
 import { useFetching } from '../components/hooks/UseFetching';
 import { getPageCount } from '../utils/pages';
-// import{getPagesArray } from '../utils/pages'
+
 import Pagination from '../components/UI/pagination/Pagination';
 
 function Posts() {
