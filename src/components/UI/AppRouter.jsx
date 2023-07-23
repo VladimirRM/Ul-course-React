@@ -15,15 +15,20 @@ const AppRouter = () => {
     {privateRoutes.map(route=>
       <Route component={route.component} 
        path={route.path}
-        exact={route.exact}/>
-    )}
+        exact={route.exact}
+        key={route.path}
+        />
+        
+        )}
+        <Redirect  to='/posts'/>
 </Switch> 
     :
     <Switch>
     {publicRoutes.map(route=>
       <Route component={route.component} 
        path={route.path}
-        exact={route.exact}/>
+        exact={route.exact}
+        key={route.path}/>
     )}
   <Redirect  to='/login'/>
     </Switch>

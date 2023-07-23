@@ -1,15 +1,17 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import MyInput from '../components/UI/input/MyInput'
+import { AuthContext } from '../Router/context'
 
 const Login = () => {
-
-    const login = (e)=>{
-        e.preventDefault()
+     const {isAuth,setIsAuth} = useContext(AuthContext)
+    const login = event =>{
+        event.preventDefault()
+        setIsAuth(true)
     }
   return (
     <div>
          <h1>Page for the Login</h1>
-         <form onSubmit={submit}>
+         <form onSubmit={login}>
             <MyInput type="text"
             placeholder='Enter login'
             />
