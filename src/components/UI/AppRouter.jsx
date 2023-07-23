@@ -4,21 +4,27 @@ import { routes } from '../../Router'
 import { privateRoutes, publicRoutes } from '../../Router'
 
 const AppRouter = () => {
+    const isAuth = false
   return (
-
-       <Switch>
-      {privateRoutes.map(route=>
-        <Route component={route.component} 
-         path={route.path}
-          exact={route.exact}/>
-      )}
-      {publicRoutes.map(route=>
-        <Route component={route.component} 
-         path={route.path}
-          exact={route.exact}/>
-      )}
-    <Redirect  to='/posts'/>
-  </Switch> 
+    isAuth 
+    ?
+    <Switch>
+    {privateRoutes.map(route=>
+      <Route component={route.component} 
+       path={route.path}
+        exact={route.exact}/>
+    )}
+</Switch> 
+    :
+    <Switch>
+    {publicRoutes.map(route=>
+      <Route component={route.component} 
+       path={route.path}
+        exact={route.exact}/>
+    )}
+  <Redirect  to='/login'/>
+    </Switch>
+ 
 
   )
 }
