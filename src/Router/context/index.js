@@ -1,3 +1,3 @@
-import {createContext }  from 'react'
+import {createContext} from 'react'
 
-export const authContext = createContext(nul)
+export const AuthContext = createContext(null)
