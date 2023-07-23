@@ -2,10 +2,14 @@ import React from 'react'
 import MyInput from '../components/UI/input/MyInput'
 
 const Login = () => {
+
+    const login = (e)=>{
+        e.preventDefault()
+    }
   return (
     <div>
          <h1>Page for the Login</h1>
-         <form>
+         <form onSubmit={submit}>
             <MyInput type="text"
             placeholder='Enter login'
             />
