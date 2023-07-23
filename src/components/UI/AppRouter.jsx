@@ -3,6 +3,7 @@ import {Switch,Route,Redirect} from 'react-router-dom'
 import Posts from '../../pages/Posts'
 import Error from '../../pages/Error'
 import About from '../../pages/About'
+import PostIdPage from '../../pages/PostIdPage'
 
 
 const AppRouter = () => {
@@ -12,13 +13,16 @@ const AppRouter = () => {
   <Route path='/about'>
     <About />
   </Route>
-  <Route path='/posts'>
+  <Route exact path='/posts'>
     <Posts />
+  </Route>
+  <Route exact path='/posts/:id'>
+    <PostIdPage />
   </Route>
   <Route path='/error'>
     <Error />
   </Route>
-    <Redirect  to='/error'/>
+    <Redirect  to='/posts'/>
   </Switch> 
 
   )
