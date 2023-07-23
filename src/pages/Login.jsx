@@ -12,6 +12,7 @@ const Login = () => {
             <MyInput type="password"
             placeholder='Enter password'
             />
+            <button>Enter</button>
          </form>
     </div>
   )
